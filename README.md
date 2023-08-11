@@ -12,3 +12,4 @@
 
 - https://github.com/neoclide/coc.nvim/wiki/Language-servers#ocaml-and-reasonml
 
+- https://github.com/janestreet/learn-ocaml-workshop

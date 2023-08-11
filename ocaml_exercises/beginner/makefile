@@ -10,7 +10,9 @@ PROGRAMS = tail_of_a_list \
 	length_of_a_list \
 	reverse_a_list \
 	palindrome \
-	run_length_encoding
+	run_length_encoding \
+	mod_run_length_encoding \
+	duplicate_the_elements_of_a_list
 
 # Targets
 all: $(PROGRAMS)
