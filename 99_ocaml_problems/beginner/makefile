@@ -12,7 +12,8 @@ PROGRAMS = tail_of_a_list \
 	palindrome \
 	run_length_encoding \
 	mod_run_length_encoding \
-	duplicate_the_elements_of_a_list
+	duplicate_the_elements_of_a_list \
+	split_list_into_two_parts 
 
 # Targets
 all: $(PROGRAMS)
