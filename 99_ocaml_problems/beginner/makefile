@@ -17,7 +17,8 @@ PROGRAMS = tail_of_a_list \
 	remove_the_kth_element_from_a_list \
 	insert_an_element_at_a_given_position_into_a_list \
 	create_a_list_containing_all_integers_within_a_given_range \
-	lotto_draw_n_different_random_numbers_from_the_set_1_to_m
+	lotto_draw_n_different_random_numbers_from_the_set_1_to_m \
+	generate_a_random_permutation_of_the_elements_of_a_list
 
 # Targets
 all: $(PROGRAMS)
