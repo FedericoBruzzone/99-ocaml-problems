@@ -2,7 +2,7 @@ let remove_at count l =
     let rec aux count acc = function
         | [] -> []
         | h :: t -> if count = 0 then acc @ t 
-                  else aux (count - 1) (h :: acc) t
+                    else aux (count - 1) (h :: acc) t
         in 
         aux count [] l
 ;;
