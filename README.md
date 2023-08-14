@@ -1,28 +1,35 @@
 # Learn OCaml 
 
+# How to compile 
+
+- beginner
+    - lists
+        ```Bash
+        $ cd ./99_ocaml_problems/beginner/lists
+        $ make all                        # Compile and run all files
+        $ make clean
+        ```
+    - arithmetic 
+        ```Bash
+        $ cd ./99_ocaml_problems/beginner/arithmetic
+        $ make all                        # Compile and run all files
+        $ make clean
+        ```
 # Set up
 
-```
+```Bash
 $ opam init          # Can take some time
 $ eval $(opam env)
 ```
 
 or 
 
-```
+```Bash
 $ opam switch create 4.14.0
 $ eval $(opam env)
 ```
 
-## How to compile 
-
-- Beginner
-
-```
-$ cd ./99_ocaml_problems/beginner
-$ make all                        # Compile and run all files
-$ make clean
-```
+   
 
 ---
 
