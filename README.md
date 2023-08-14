@@ -1,6 +1,28 @@
 # Learn OCaml 
 
+# Set up
 
+```
+$ opam init          # Can take some time
+$ eval $(opam env)
+```
+
+or 
+
+```
+$ opam switch create 4.14.0
+$ eval $(opam env)
+```
+
+## How to compile 
+
+- Beginner
+
+```
+$ cd ./99_ocaml_problems/beginner
+$ make all                        # Compile and run all files
+$ make clean
+```
 
 ---
 
