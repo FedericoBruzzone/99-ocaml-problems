@@ -3,7 +3,6 @@ let rec length = function
     | _ :: t -> 1 + length t
 ;;
 
-(* Tail recursive *)
 let length l = 
     let rec aux n = function
         | [] -> n 

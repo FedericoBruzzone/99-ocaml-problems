@@ -1,6 +1,6 @@
-# Learn OCaml 
+# **Learn OCaml**
 
-# How to compile 
+# How to compile
 
 - beginner
     - lists
@@ -9,7 +9,7 @@
         $ make all                        # Compile and run all files
         $ make clean
         ```
-    - arithmetic 
+    - arithmetic
         ```Bash
         $ cd ./99_ocaml_problems/beginner/arithmetic
         $ make all                        # Compile and run all files
@@ -22,18 +22,18 @@ $ opam init          # Can take some time
 $ eval $(opam env)
 ```
 
-or 
+or
 
 ```Bash
 $ opam switch create 4.14.0
 $ eval $(opam env)
 ```
 
-   
-
 ---
 
 # Links
+
+- https://v2.ocaml.org/learn/tutorials/99problems.html
 
 - https://cs3110.github.io/textbook/chapters/preface/about.html
 

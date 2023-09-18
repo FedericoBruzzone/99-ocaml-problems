@@ -6,3 +6,4 @@ let rec last = function
 
 last ["a" ; "b" ; "c" ; "d"];;
 last [];;
+
