@@ -1,4 +1,4 @@
-# **Learn OCaml**
+# **99 OCaml Problems**
 
 # How to compile
 
