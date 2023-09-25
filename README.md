@@ -2,19 +2,11 @@
 
 # How to compile
 
-- beginner
-    - lists
-        ```Bash
-        $ cd ./99_ocaml_problems/beginner/lists
-        $ make all                        # Compile and run all files
-        $ make clean
-        ```
-    - arithmetic
-        ```Bash
-        $ cd ./99_ocaml_problems/beginner/arithmetic
-        $ make all                        # Compile and run all files
-        $ make clean
-        ```
+```Bash
+$ make all                        # Compile and run all files
+$ make clean
+```
+
 # Set up
 
 ```Bash
