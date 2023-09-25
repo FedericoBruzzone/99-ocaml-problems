@@ -1,13 +1,8 @@
-let rec length = function
-    | [] -> 0
-    | _ :: t -> 1 + length t
-;;
-
-let length l = 
+let length l =
     let rec aux n = function
-        | [] -> n 
+        | [] -> n
         | _ :: t -> aux (n + 1) t
-    in 
+    in
     aux 0 l
 ;;
 
