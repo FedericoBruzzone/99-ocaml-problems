@@ -15,11 +15,10 @@ PROGRAMS = 01 \
 	09 \
 	10 \
 	11 \
-
-
+	12 \
 
 # Targets
-all: $(PROGRAMS)
+all: clean $(PROGRAMS)
 
 # Compile and execute each program
 $(PROGRAMS): %: %.ml
