@@ -4,14 +4,17 @@ OCAMLOPT = ocamlopt
 OCAMLFLAGS = -w -24
 
 # List of program names (without the .ml extension)
-PROGRAMS = 1_a_few_of_chemistry
+LIBS =
+
+PROGRAMS = 1_a_few_of_chemistry \
+2_temperature_conversion_system
 
 # Targets
 all: clean $(PROGRAMS)
 
 # Compile and execute each program
 $(PROGRAMS): %: %.ml
-	$(OCAMLC) $(OCAMLFLAGS) -o $@ $<
+	$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) $<
 	./$@
 
 clean:
