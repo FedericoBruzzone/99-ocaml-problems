@@ -21,20 +21,17 @@ type scale =
   | Reaumur
   | Romer
 
-type temperature = {
-  scl : scale;
-  v : float;
-}
+type temperature = { scl : scale; v : float }
 
 let from_celsius_to_any t = function
   | Celsius -> t
-  | Fahrenheit -> { scl = Fahrenheit; v = t.v *. 9. /. 5. +. 32. }
+  | Fahrenheit -> { scl = Fahrenheit; v = (t.v *. 9. /. 5.) +. 32. }
   | Kelvin -> { scl = Kelvin; v = t.v +. 273.15 }
-  | Rankine -> { scl = Rankine; v = t.v *. 9. /. 5. +. 491.67 }
+  | Rankine -> { scl = Rankine; v = (t.v *. 9. /. 5.) +. 491.67 }
   | Delisle -> { scl = Delisle; v = (100. -. t.v) *. 3. /. 2. }
   | Newton -> { scl = Newton; v = t.v *. 33. /. 100. }
   | Reaumur -> { scl = Reaumur; v = t.v *. 4. /. 5. }
-  | Romer -> { scl = Romer; v = t.v *. 21. /. 40. +. 7.5 }
+  | Romer -> { scl = Romer; v = (t.v *. 21. /. 40.) +. 7.5 }
 
 let from_any_to_celsius t =
   match t.scl with
@@ -42,22 +39,63 @@ let from_any_to_celsius t =
   | Fahrenheit -> { scl = Celsius; v = (t.v -. 32.) *. 5. /. 9. }
   | Kelvin -> { scl = Celsius; v = t.v -. 273.15 }
   | Rankine -> { scl = Celsius; v = (t.v -. 491.67) *. 5. /. 9. }
-  | Delisle -> { scl = Celsius; v = 100. -. t.v *. 2. /. 3. }
+  | Delisle -> { scl = Celsius; v = 100. -. (t.v *. 2. /. 3.) }
   | Newton -> { scl = Celsius; v = t.v *. 100. /. 33. }
   | Reaumur -> { scl = Celsius; v = t.v *. 5. /. 4. }
   | Romer -> { scl = Celsius; v = (t.v -. 7.5) *. 40. /. 21. }
 
+let string_of_scale = function
+  | Celsius -> "Cel"
+  | Fahrenheit -> "Fah"
+  | Kelvin -> "Kel"
+  | Rankine -> "Ran"
+  | Delisle -> "Del"
+  | Newton -> "New"
+  | Reaumur -> "Rea"
+  | Romer -> "Rom"
+
+let pad s n =
+  let len = String.length s in
+  if len >= n then s
+  else
+    let pad = String.make (n - len) ' ' in
+    pad ^ s
+
+let make_row t =
+  let scales =
+    [ Celsius; Fahrenheit; Kelvin; Rankine; Delisle; Newton; Reaumur; Romer ]
+  in
+  List.map (fun s -> from_celsius_to_any (from_any_to_celsius t) s) scales
+
 let pure_to_table n =
-  let t = { scl = Celsius; v = n } in
-  let scales = [ Celsius; Fahrenheit; Kelvin; Rankine; Delisle; Newton; Reaumur; Romer ] in
+  let scales =
+    [ Celsius; Fahrenheit; Kelvin; Rankine; Delisle; Newton; Reaumur; Romer ]
+  in
   let rec aux scales =
     match scales with
     | [] -> []
-    | hd :: tl -> from_celsius_to_any t hd :: aux tl
+    | hd :: tl ->
+        let t = { scl = hd; v = n } in
+        let row = make_row t in
+        row :: aux tl
   in
-  let table = aux scales in
-  List.iter (fun t -> Printf.printf "%f\n" t.v) table
+  aux scales
+
+let print_table tab =
+  List.iter
+    (fun s ->
+      Printf.printf "%s" (pad (Printf.sprintf "%s" (string_of_scale s)) 10))
+    [ Celsius; Fahrenheit; Kelvin; Rankine; Delisle; Newton; Reaumur; Romer ];
+  Printf.printf "\n";
+  List.iter
+    (fun row ->
+      List.iter
+        (fun el -> Printf.printf "%s" (pad (Printf.sprintf "%.2f" el.v) 10))
+        row;
+      Printf.printf "\n")
+    tab
 
 let () =
-  pure_to_table 100.0;
-  Printf.printf "\n";
+  let table = pure_to_table 42.0 in
+  print_table table;
+  Printf.printf "\n"
