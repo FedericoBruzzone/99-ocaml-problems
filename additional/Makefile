@@ -7,7 +7,8 @@ OCAMLFLAGS = -w -24
 LIBS =
 
 PROGRAMS = 1_a_few_of_chemistry \
-2_temperature_conversion_system
+2_temperature_conversion_system \
+3_matrix_calculi
 
 # Targets
 all: clean $(PROGRAMS)
