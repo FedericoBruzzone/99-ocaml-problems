@@ -40,6 +40,48 @@ let make_init n =
   in
   make_init' n n 1
 
+let transpose m =
+  let rec transpose' m acc =
+    match m with
+    | [] -> acc (* empty matrix *)
+    | [] :: _ -> acc (* empty row *)
+    | m ->
+        let column = List.map List.hd m in
+        let rest = List.map List.tl m in
+        transpose' rest (column :: acc)
+  in
+  transpose' m [] |> List.rev
+
+let ( + ) m1 m2 =
+  let rec add m1 m2 =
+    match (m1, m2) with
+    | [], [] -> []
+    | m1, [] -> m1
+    | [], m2 -> m2
+    | h1 :: t1, h2 :: t2 -> List.map2 (fun x y -> x + y) h1 h2 :: add t1 t2
+    (* | h1 :: t1, h2 :: t2 ->
+       (List.fold_left2
+         (fun acc x y -> x + y :: acc)
+         [] h1 h2 |> List.rev) :: add t1 t2 *)
+    (* tail recursive *)
+  in
+  add m1 m2
+
+let ( * ) m1 m2 =
+  let rec mul m1 m2 =
+    match (m1, m2) with
+    | [], [] -> []
+    | m1, [] -> m1
+    | [], m2 -> m2
+    | h1 :: t1, h2 :: t2 -> List.map2 (fun x y -> x * y) h1 h2 :: mul t1 t2
+    (* | h1 :: t1, h2 :: t2 ->
+       (List.fold_left2
+         (fun acc x y -> x * y :: acc)
+         [] h1 h2 |> List.rev) :: mul t1 t2 *)
+    (* tail recursive *)
+  in
+  mul m1 m2
+
 let print_matrix m =
   List.iter
     (fun row ->
@@ -56,4 +98,18 @@ let () =
   print_newline ();
   print_matrix (make_identity 3 3);
   print_newline ();
-  print_matrix (make_init 3)
+  print_matrix (make_init 3);
+  print_newline ();
+  print_matrix (transpose (make_init 3));
+  print_newline ();
+  print_matrix (make_init 3 + make_init 3);
+  print_newline ();
+  let m1 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ]; [ 7; 8; 9 ] ] in
+  let m2 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ] ] in
+  print_matrix (m1 + m2);
+  print_newline ();
+  print_matrix (make_init 3 * make_init 3);
+  print_newline ();
+  let m1 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ]; [ 7; 8; 9 ] ] in
+  let m2 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ] ] in
+  print_matrix (m1 * m2);
