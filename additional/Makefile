@@ -8,7 +8,9 @@ LIBS =
 
 PROGRAMS = 1_a_few_of_chemistry \
 2_temperature_conversion_system \
-3_matrix_calculi
+3_matrix_calculi \
+6_approximated_trigonometric_functions
+
 
 # Targets
 all: clean $(PROGRAMS)

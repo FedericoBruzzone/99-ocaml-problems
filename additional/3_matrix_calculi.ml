@@ -113,3 +113,4 @@ let () =
   let m1 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ]; [ 7; 8; 9 ] ] in
   let m2 = [ [ 1; 2; 3 ]; [ 4; 5; 6 ] ] in
   print_matrix (m1 * m2);
+  print_newline ()
