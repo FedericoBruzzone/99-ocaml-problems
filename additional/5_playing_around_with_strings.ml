@@ -39,7 +39,7 @@ let remove_char s x =
   in
   aux s ""
 
-let ( - ) s rem =
+let ( -: ) s rem =
   let rec aux s rem =
     if String.length rem = 0 then s
     else
@@ -60,7 +60,21 @@ let string_filter f s =
   in
   aux f s ""
 
-(* let anagram s l = *)
+let string_sort s =
+  let rec quick_sort s =
+    if String.length s = 0 then ""
+    else
+      let pivot = String.get s 0 in
+      let left = string_filter (fun c -> c < pivot) s in
+      let right = string_filter (fun c -> c > pivot) s in
+      quick_sort left ^ String.make 1 pivot ^ quick_sort right
+  in
+  quick_sort s
+
+let rec anagram s l =
+  if List.length l = 0 then false
+  else if string_sort s = string_sort (List.hd l) then true
+  else anagram s (List.tl l)
 
 let () =
   print_string "is_palindrome \"Do geese see God?\" = ";
@@ -69,6 +83,30 @@ let () =
   print_string "is_palindrome \"Do you see God?\" = ";
   print_endline (string_of_bool (is_palindrome "Do you see God?"));
   print_newline ();
-  print_string ("Federico Bruzzone" - "ricoBruzz");
+  print_string ("Federico Bruzzone" -: "ricoBruzz");
   print_newline ();
-  print_string (string_filter (fun c -> c = 'a') "abracadabra")
+  print_string (string_filter (fun c -> c = 'a') "abracadabra");
+  print_newline ();
+  print_string (string_sort "abracadabra");
+  print_newline ();
+  print_string
+    "anagram \"abracadabra\" [\"abracadabra\"; \"abracadabr\"; \"abracadab\"; \
+     \"abracada\"; \"abracad\"; \"abracd\"; \"abrac\"; \"abra\"; \"abr\"; \
+     \"ab\"; \"a\"] = ";
+  print_endline
+    (string_of_bool
+       (anagram "abracadabra"
+          [
+            "abracadabra";
+            "abracadabr";
+            "abracadab";
+            "abracada";
+            "abracad";
+            "abracd";
+            "abrac";
+            "abra";
+            "abr";
+            "ab";
+            "a";
+          ]));
+  print_newline ()
