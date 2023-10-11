@@ -12,6 +12,7 @@ PROGRAMS = 1_a_few_of_chemistry \
 2_temperature_conversion_system \
 3_matrix_calculi \
 4_frequencies \
+5_playing_around_with_strings \
 6_approximated_trigonometric_functions
 
 
