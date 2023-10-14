@@ -1,3 +1,4 @@
+.SILENT:
 # ocamlfind ocamlc -package str -linkpkg 4_frequencies.ml
 
 # Compiler options
@@ -8,20 +9,26 @@ OCAMLFLAGS = -w -24
 # List of program names (without the .ml extension)
 LIBS =
 
-PROGRAMS = 1_a_few_of_chemistry \
+PROGRAMS = MyStack \
+1_a_few_of_chemistry \
 2_temperature_conversion_system \
 3_matrix_calculi \
 4_frequencies \
 5_playing_around_with_strings \
-6_approximated_trigonometric_functions
-
+6_approximated_trigonometric_functions \
+7_playing_around_with_arithmetic \
 
 # Targets
 all: clean $(PROGRAMS)
 
 # Compile and execute each program
 $(PROGRAMS): %: %.ml
-	$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) $<
+	@echo "\e[32mCompiling and executing:\e[0m \e[1m$@\e[0m"
+	if [ $@ = "7_playing_around_with_arithmetic" ]; then \
+		$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) MyStack.ml $@.ml; \
+	else \
+		$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) $<; \
+	fi
 	./$@
 
 clean:
