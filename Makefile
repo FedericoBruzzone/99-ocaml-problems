@@ -16,6 +16,8 @@ PROGRAMS = 01 \
 	10 \
 	11 \
 	12 \
+	13 \
+	14 \
 
 # Targets
 all: clean $(PROGRAMS)

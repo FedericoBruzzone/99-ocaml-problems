@@ -1,3 +1,7 @@
+(*
+  6. Find out whether a list is a palindrome. (easy)
+*)
+
 let is_palindrome l =
   let lr = List.rev l in
   let rec aux l lr =

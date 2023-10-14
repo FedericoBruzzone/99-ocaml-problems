@@ -1,3 +1,7 @@
+(*
+  9. Pack consecutive duplicates of list elements into sublists. (medium)
+*)
+
 let pack (l : 'a list) =
     let rec aux (acc : 'a list list) (curr : 'a list) (l : 'a list) =
         match l with
