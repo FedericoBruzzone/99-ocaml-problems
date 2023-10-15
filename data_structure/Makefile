@@ -10,7 +10,6 @@ OCAMLFLAGS = -w -24
 LIBS =
 
 PROGRAMS = Maybe \
-IsMonad
 
 # Targets
 all: clean $(PROGRAMS)
