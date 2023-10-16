@@ -12,7 +12,8 @@ LIBS =
 PROGRAMS = MakeMonad \
 Maybe \
 Opt \
-Main
+Main \
+ListM
 
 # Targets
 all: clean $(PROGRAMS)
@@ -20,7 +21,9 @@ all: clean $(PROGRAMS)
 # Compile and execute each program
 $(PROGRAMS): %: %.ml
 	@echo "\e[32mCompiling:\e[0m \e[1m$@\e[0m"
-	if [ $@ = "Main" ]; then \
+	if [ $@ = "ListM" ]; then \
+		$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) MakeMonad.ml $@.ml; \
+	elif [ $@ = "Main" ]; then \
 		$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) MakeMonad.ml Maybe.ml Opt.ml $@.ml; \
 	elif [ $@ = "MakeMonad" ]; then \
 		$(OCAMLC) $(OCAMLFLAGS) -o $@ $(LIBS) IMonad.mli $@.ml; \
