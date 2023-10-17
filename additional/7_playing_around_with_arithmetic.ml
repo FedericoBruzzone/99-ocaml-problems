@@ -69,12 +69,12 @@ module PolishNotation (Stack : IStack) = struct
       | Minus -> n1 - n2
       | Times -> n1 * n2
       | Divide -> n1 / n2
-      | Pow -> int_of_float ((float_of_int n1) ** (float_of_int n2))
+      | Pow -> int_of_float (float_of_int n1 ** float_of_int n2)
     in
     let rec aux = function
-      Num n -> n
-    | Unary (op, n) -> mlop_of_op op (aux n) 0
-    | Binary (n1, op, n2) -> mlop_of_op op (aux n1) (aux n2)
+      | Num n -> n
+      | Unary (op, n) -> mlop_of_op op (aux n) 0
+      | Binary (n1, op, n2) -> mlop_of_op op (aux n1) (aux n2)
     in
     aux e
 end
@@ -84,10 +84,17 @@ module PolishNotationArray = PolishNotation (StackArray)
 
 let () =
   PolishNotationList.expr_of_string "1 2 + 3 *" |> PolishNotationList.print_expr;
-  PolishNotationArray.expr_of_string "1 2 + 3 *" |> PolishNotationArray.print_expr;
-  PolishNotationList.expr_of_string "1 2 + 3 *" |> PolishNotationList.eval |> print_int |> print_newline;
-  PolishNotationArray.expr_of_string "1 2 + 3 *" |> PolishNotationArray.eval |> print_int |> print_newline;
-  PolishNotationList.expr_of_string "1 2 + 3 * 4 **" |> PolishNotationList.print_expr;
-  PolishNotationArray.expr_of_string "1 2 + 3 * 4 **" |> PolishNotationArray.print_expr;
-  PolishNotationList.expr_of_string "1 2 + 3 * 4 **" |> PolishNotationList.eval |> print_int |> print_newline;
-  PolishNotationArray.expr_of_string "1 2 + 3 * 4 **" |> PolishNotationArray.eval |> print_int |> print_newline;
+  PolishNotationArray.expr_of_string "1 2 + 3 *"
+  |> PolishNotationArray.print_expr;
+  PolishNotationList.expr_of_string "1 2 + 3 *"
+  |> PolishNotationList.eval |> print_int |> print_newline;
+  PolishNotationArray.expr_of_string "1 2 + 3 *"
+  |> PolishNotationArray.eval |> print_int |> print_newline;
+  PolishNotationList.expr_of_string "1 2 + 3 * 4 **"
+  |> PolishNotationList.print_expr;
+  PolishNotationArray.expr_of_string "1 2 + 3 * 4 **"
+  |> PolishNotationArray.print_expr;
+  PolishNotationList.expr_of_string "1 2 + 3 * 4 **"
+  |> PolishNotationList.eval |> print_int |> print_newline;
+  PolishNotationArray.expr_of_string "1 2 + 3 * 4 **"
+  |> PolishNotationArray.eval |> print_int |> print_newline
