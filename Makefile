@@ -25,6 +25,10 @@ PROGRAMS = 01 \
 	19 \
 	20 \
 	21 \
+	22 \
+	23 \
+	24 \
+	25 \
 
 # Targets
 all: clean $(PROGRAMS)
