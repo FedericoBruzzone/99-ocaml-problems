@@ -1,7 +1,8 @@
 (*
   23. Extract a given number of randomly selected elements from a list. (medium)
 
-  The selected items shall be returned in a list. We use the Random module but do not initialize it with Random.self_init for reproducibility.
+  The selected items shall be returned in a list. We use the Random module
+  but do not initialize it with Random.self_init for reproducibility.
 *)
 
 let rand_select l n =
