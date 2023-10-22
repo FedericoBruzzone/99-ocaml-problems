@@ -30,6 +30,7 @@ PROGRAMS = 01 \
 	24 \
 	25 \
 	26 \
+	27 \
 
 # Targets
 all: clean $(PROGRAMS)

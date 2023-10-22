@@ -8,14 +8,14 @@
 *)
 
 let rec extract n l =
-  if n = 0 then [[]]
-  else match l with
-      [] -> []
+  if n = 0 then [ [] ]
+  else
+    match l with
+    | [] -> []
     | h :: t ->
         let f = List.map (fun x -> h :: x) (extract (n - 1) t) in
         let s = extract n t in
         f @ s
 ;;
 
-extract 2 ["a"; "b"; "c"; "d"];;
-
+extract 2 [ "a"; "b"; "c"; "d" ]
