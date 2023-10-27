@@ -4,12 +4,13 @@
   Construct a flat list containing the prime factors in ascending order.
 *)
 
-let miller_rabin n i =
-  match i with
-    0 -> []
-  | i ->
-    let a = Random.int Int32.ma
+let factors n =
+  let rec aux acc n d =
+    match n with
+    | 1 -> acc
+    | n -> if n mod d = 0 then aux (d :: acc) (n / d) d else aux acc n (d + 1)
+  in
+  aux [] n 2 |> List.rev
+;;
 
-let factors n = ();;
-
-factors 315;;
+factors 315
