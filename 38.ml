@@ -47,7 +47,7 @@ let timeit f n =
   let start = Sys.time () in
   let _ = f n in
   let stop = Sys.time () in
-  Printf.printf "Execution time: %fs\n" (stop -. start)
+  stop -. start
 ;;
 
 timeit phi 10090;;
