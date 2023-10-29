@@ -18,9 +18,6 @@ module MonadicList = struct
 end
 
 let () =
-  (*
-  1. Write a function last : 'a list -> 'a option that returns the last element of a list.
-   *)
   let open MonadicList in
   let l1 : int MonadicList.t = [ 5; 2; 3; 4; 1 ] in
   let last_element = l1 >>= (fun x -> (x, 1) :: []) in
